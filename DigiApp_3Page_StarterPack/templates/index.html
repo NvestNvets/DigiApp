@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigiApp - Digital Products for Veterans</title>
+    <meta property="og:title" content="DigiApp - Digital Products for Veterans">
+    <meta property="og:description" content="Support veterans by purchasing their digital products">
+    <meta property="og:url" content="{{ base_url }}">
+    <meta property="og:image" content="{{ base_url }}/images/og-image.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">DigiApp</div>
+            <ul>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Support Veterans Through Digital Products</h1>
+            <p>Purchase digital products created by veterans and help them build sustainable income.</p>
+            <a href="{{ paypal_link }}" target="_blank" class="btn btn-paypal">Support Now</a>
+        </section>
+
+        <section id="products" class="products">
+            <h2>Featured Products</h2>
+            <div class="product-grid">
+                <!-- Products will be dynamically loaded -->
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <h2>Our Mission</h2>
+            <p>We empower veterans to create and sell digital products, providing them with sustainable income opportunities.</p>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2>Get in Touch</h2>
+            <p>Have questions? Want to support our mission?</p>
+            <a href="{{ paypal_link }}" target="_blank" class="btn btn-paypal">Contact Us</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 DigiApp. All rights reserved.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html> 

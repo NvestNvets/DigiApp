@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigiApp Guide Viewer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .viewer-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .pdf-container {
+            width: 100%;
+            height: 80vh;
+            border: 1px solid #ddd;
+            margin: 20px 0;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .veteran-badge {
+            background-color: #0056b3;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            margin-left: 10px;
+        }
+        @media print {
+            .no-print {
+                display: none;
+            }
+            .pdf-container {
+                height: 100vh;
+                border: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="viewer-container">
+        <div class="no-print">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/">
+                        <img src="/static/logo.png" alt="DigiApp" height="30">
+                        DigiApp
+                    </a>
+                    <span class="veteran-badge">Veteran Owned</span>
+                </div>
+            </nav>
+
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="window.print()">
+                    <i class="bi bi-printer"></i> Print Guide
+                </button>
+                <a href="{{ download_url }}" class="btn btn-success" download>
+                    <i class="bi bi-download"></i> Download PDF
+                </a>
+                <button class="btn btn-info" onclick="toggleFullscreen()">
+                    <i class="bi bi-arrows-fullscreen"></i> Fullscreen
+                </button>
+            </div>
+
+            <div class="alert alert-info">
+                <i class="bi bi-info-circle"></i>
+                This guide was created by a fellow veteran. Need help? Reply HELP to your confirmation text.
+            </div>
+        </div>
+
+        <div class="pdf-container">
+            <iframe
+                src="{{ pdf_url }}"
+                width="100%"
+                height="100%"
+                frameborder="0"
+            ></iframe>
+        </div>
+
+        <div class="no-print mt-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Share Your Story</h5>
+                    <p class="card-text">
+                        Are you a veteran with a story to share? Create your own guide and help others.
+                    </p>
+                    <a href="/landing" class="btn btn-primary">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleFullscreen() {
+            const iframe = document.querySelector('iframe');
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.webkitRequestFullscreen) {
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) {
+                iframe.msRequestFullscreen();
+            }
+        }
+    </script>
+</body>
+</html> 
